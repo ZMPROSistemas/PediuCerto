@@ -1,0 +1,132 @@
+<style>
+.card-header{
+	overflow: hidden;
+	background: transparent;
+}
+
+.form-control{
+        text-transform: capitalize;
+    }
+    md-radio-button{
+        
+        border-radius: 6px;
+        padding: 8px;
+        background-color: transparent;
+    }
+
+    md-radio-button .md-container {
+        margin-left: 10px;
+	}
+
+.modal {
+	z-index:9999;
+}
+.log-align {
+        margin-top: 30px !important;
+    }
+	</style>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: inherit; z-index: 9999;">
+	<a href="<?=$urlAssets?>sacola/{{empresa[0].em_cod}}/{{empresa[0].em_token}}"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+<h5 style="position: absolute; top:8px; left: 50px;">Lista de Endereço</h5>
+
+<?php
+	include_once("resources/modal/atualizaEnd.html");
+?>
+
+<div class="card-header">
+
+	<!--div class="input-group">
+		
+		<div class="input-group-append">
+			<span class="input-group-text" style="background: transparent; border: 1.5px solid #7F7F7F; border-right: none;">
+				<button class="btn" style="border:none; padding: 0; background:transparent" ng-click="pesquisarCEP(cep)"><i class="fas fa-search" style="color:rgb(244,81,30)"></i></button>
+			</span>
+		</div>
+
+		<input type="text" class="form-control" name="pesquisa" ng-model="cep" style="border-left: none;" placeholder="Buscar por CEP">
+	</div-->
+</div>
+<div class="card-header" style="margin-top:0;">
+	<a data-toggle="modal" data-target="#atualizaEnd">
+		<div layout="row">
+			<div flex="10">
+				<span class="material-icons" style="color:#000;">gps_fixed</span>
+			</div>
+			<div flex="">
+				<h5>Usar local atual</h5>
+			</div>
+		</div>
+	</a>
+</div>	
+
+<div class="card-header" style="margin-top:0;">
+	<div class="form-row">
+
+		<md-radio-group ng-model="local" style="width: 100%; margin-top: 15px;" ng-click="selecionarEndereco(local)">
+		
+			<div layout="row" layout-align="space-between center">
+				<div>
+					<md-radio-button value="Casa" class="md-primary" style="height: auto;">
+
+						<i class="fas fa-home"></i>
+						<span style="font-weight: bold;">Casa</span><br>
+						<span ng-if="perfil[0].pe_endereco != ''">{{perfil[0].pe_endereco}}, {{perfil[0].pe_end_num}} - {{perfil[0].pe_bairro}}, {{perfil[0].pe_cidade}} {{perfil[0].pe_uf}}</span><br>
+						<span>{{perfil[0].pe_end_comp}}</span>
+
+					</md-radio-button>
+				</div>
+
+				<div>
+					<md-button ng-click="nextPageCadEnd()" class="md-accent" class="md-icon-button">
+						<i class="fas fa-edit" style="color: #EC3744;"></i>
+					</md-button>
+											
+				</div>
+
+			</div> 
+
+			<div layout="row" layout-align="space-between center">
+				<div>
+					<md-radio-button value="Trabalho">
+						
+						<i class="fas fa-briefcase"></i> 
+						<span style="font-weight: bold;">Trabalho</span> <br>
+
+						<span ng-if="perfil[0].pe_endtrab != ''">{{perfil[0].pe_endtrab}}, {{perfil[0].pe_end_num_trab}} - {{perfil[0].pe_bairro_trab}}, {{perfil[0].pe_end_cid_trab}} {{perfil[0].pe_uf_trab}}</span><br>
+						<span>{{perfil[0].pe_end_comp_trab}}</span>
+						
+					</md-radio-button>
+				</div>
+
+				<div>
+					<md-button ng-click="nextPageCadEnd()" class="md-accent" class="md-icon-button">
+						<i class="fas fa-edit" style="color: #EC3744;"></i>
+					</md-button>
+					
+				</div>
+
+			</div>
+			
+			<md-radio-button value="retirar">
+				<div layout="row" layout-align="space-between center">
+					
+					<div>
+						<i class="fas fa-store"></i>
+						<span style="font-weight: bold;">Retirar no local</span> <br>
+
+					</div>
+				
+			</md-radio-button>
+			
+	
+		</md-radio-group>
+
+		
+	</div>
+
+	
+</div>
+

@@ -1,0 +1,46 @@
+
+<div class="modal fade" id="formaDinheiro" tabindex="-1" aria-labelledby="formaDinheiro" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formaDinheiro">Forma De Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card-header">
+                    <center><h4>Dinheiro</h4></center>
+                </div>
+                
+                <center><span>Vai precisar de troco?</span></center>
+
+                <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center">
+                    <md-button flex="50" class="md-primary md-raised" ng-click="Trocoview = true" style="border-radius:6px; height:48px; background-color:#F51929 ;">SIM</md-button>
+                    <md-button flex="50" class="md-primary md-raised" ng-model="n" ng-click="Trocoview = false" style="border-radius:6px; height:48px; background-color:#F51929 ;">NÃO</md-button>
+                </div>
+
+                <div  layout="column" layout-sm="column" layout-align="center" ng-model="Trocoview" ng-show="Trocoview == true">
+                    <center><span style="margin-top:15px; margin-bottom:8px ;">Para Quanto?</span></center><br>
+                    <input type="text" class="form-control" name="troco" ng-model="troco" value="" style="width: 90%; border-radius: 4px; font-weight: bold; text-align: right;" money-mask>
+                </div>
+
+                <div  layout="row" layout-sm="column" layout-align="center" style="width: 100%;">
+                    <!--md-button class="md-primary md-raised" style="width: 90%; border-radius:6px; height:48px; background-color:#F51929;" ng-click="addFormaDePagamento('D',troco)">CONFIRMAR</md-button-->
+                </div>
+
+            </div>
+
+            <div class="modal-footer" style="width: 100%;">
+                <md-button class="md-primary md-raised" style="width: 90%; border-radius:6px; height:48px; background-color:#F51929;" ng-click="addFormaDePagamento('D',troco)">CONFIRMAR</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+      
+
+    
+    
+

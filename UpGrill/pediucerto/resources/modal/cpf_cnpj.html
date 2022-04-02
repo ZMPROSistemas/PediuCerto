@@ -1,0 +1,31 @@
+
+<div class="modal fade" id="cpf_cnpj" tabindex="-1" aria-labelledby="cpf_cnpj" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cpf_cnpj">CPF/CNPJ Na Nota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="card-header">
+                        <center><h4>CPF/CNPJ na Nota</h4></center>
+                    </div>
+                    
+                    
+                    <div  layout="column" layout-sm="column" layout-align="center">
+                        
+                        <input type="text" class="form-control" name="cpf_cnpj" ng-model="cpf_cnpj" value="" placeholder="CPF/CNPJ" style="width: 90%; border-radius: 4px; font-weight: bold; text-align: right;" onkeypress="return onlynumber();">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer" style="width: 100%;">
+                    <md-button class="md-primary md-raised" style="width: 90%; border-radius:6px; height:48px; background-color:#F51929;" ng-click="addCpfCnpj(cpf_cnpj)">CONFIRMAR</md-button>
+                </div>
+        </div>
+    </div>
+</div>

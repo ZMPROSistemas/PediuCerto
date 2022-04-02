@@ -1,0 +1,244 @@
+
+<style>
+
+@font-face {
+   font-family:Poppins-Medium;
+   src: url('Font/Poppins-Medium.ttf');
+}
+
+.card-header{
+    top: 15px;
+    left: 0px;
+    width: 100%;
+    height: 231px;
+    padding: 0;
+    overflow: hidden;
+  
+    background: var(--unnamed-color-c2c2c2) 0% 0% no-repeat padding-box;
+    background: #C2C2C2 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }
+  
+  .card-header img{
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .estabelecimento{
+	position: relative;
+    top: -20px;
+	margin:0 auto;
+    width: 90%;
+	height: 206px;
+	padding: 16px 14px;
+  
+    border: 1px solid var(--unnamed-color-efefef);
+    background: #EFEFEF 0% 0% no-repeat padding-box;
+    border: 1px solid #EFEFEF;
+    border-radius: 6px;
+    opacity: 1;
+  }
+  .emp{
+	font-size:28px;
+	text-align: left;
+	font-weight: bold;
+	text-align: left;
+	letter-spacing: 0px;
+	color: #000000;
+  }
+  .fa-heart{
+	color: #F51929;
+	text-align: right;
+  }
+  .emp-end, .emp-entrega{
+	font-size: 14px;
+	color: #000000;
+	opacity: 0.5;
+  }
+  .subGroupList{
+	 
+	  
+	  overflow-x: auto;
+	  overflow-y: hidden;
+	  background-color: rgba(0, 0, 0, 0.1);
+	  position: relative;
+  }
+  .emp-entrega{ }
+
+  #myDIV {
+
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	margin: 0 auto;
+	width: 100%;
+	overflow-x: auto;
+	overflow-y:hidden;
+	background-color:rgb(255, 255, 255);
+	padding: 10px;
+}
+
+#content {
+ /* height: 800px;
+ width: 3000px;*/
+  background-color: #fff;
+}
+.em_ab{
+	margin: 0 auto; 
+	margin-top: 8px;	
+	padding:5px 60px 5px 60px;
+	border: 3px dashed rgb(19, 130, 4);
+	border-radius:8px;
+	
+}
+.em_fc{
+	margin: 0 auto; 
+	margin-top: 8px;	
+	padding:5px 60px 5px 60px;
+	border: 3px dashed rgb(255, 10, 4);
+	
+	border-radius:8px;
+
+}
+.itens{
+	border-radius: 6px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.1), 0 2px 5px -1px rgba(0,0,0,0.1);
+	margin-top: 15px;
+	padding-top: 10px;
+		
+}
+.card-media img{
+	width: 110px;
+	margin-left: 15px;
+	border-radius: 6px;
+	border: 1px #b4b5b6 solid;
+}
+.produtos{
+	position: relative;
+	margin-top: 15px;
+	left: 15px;
+	width: 90%;
+
+}
+
+.sacola{
+	position: fixed;
+	bottom: 0;
+	z-index: 999;
+	width: 100%;
+	height: 10%;
+	padding: 15px;
+	background: #f51929 ;
+	border-radius: 20px 20px 0 0;
+	
+}
+
+.itensSacola{
+	color: #F8F6F6;
+}
+</style>
+
+	<div id="msgAppInstalado" class="alert alert-success" role="alert" style="display: none;padding: 5px; margin: 5px; position: absolute; top: 0;"><strong><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></strong> O aplicativo<b>Apetitoso Lanches</b> foi adicionado na tela inicial do seu aparelho.</div>
+	
+	<div class="card-header">
+		<img src="<?=$urlBaseImg?>{{empresa[0].em_foto_url}}">
+	</div>
+	<div class="estabelecimento">
+		<div layout="row">
+			<div flex-gt-sm="76">
+				<span class="emp">{{empresa[0].em_fanta}}</span>
+			</div>
+			<!--div flex-gt-sm="23" flex="33">
+				<i class="far fa-heart" ng-click="limpaCache()"></i>
+			</div-->
+		</div>
+		<div layout="row" style="">
+			<div flex="">
+				<span class="emp-end">{{empresa[0].em_cid}}, </span>
+				<span class="emp-end">{{empresa[0].em_bairro}}</span>
+			</div>
+		</div>
+		<div layout="row">
+			<div flex-gt-sm="76" style="margin: 0 auto; margin-top: 20px;">
+				<span class="emp-entrega"> Tempo de Entrega: {{empresa[0].em_entrega1}} - {{empresa[0].em_entrega2}} Horas </span>
+			</div>
+		</div>
+		<div layout="row">
+			<div flex-gt-sm="76" style="" ng-class="empresa[0].em_aberto == 'S' ? 'em_ab':'em_fc'">
+				Estabelecimento <span ng-if="empresa[0].em_aberto == 'S'"> Aberto</span>
+				<span ng-if="empresa[0].em_aberto == 'N'"> Fechado</span>
+				<span ng-if="empresa[0].em_aberto == ''"> Fechado</span>
+			</div>
+		</div>
+	</div>
+	<div id="myDIV" data-scroll-header>
+		<div id="content" ng-repeat="subGrupo in subGrupo" style=" width: {{totalSubGupo}}px;">
+			<div style="float: left; margin-right:25px; text-align:center;">
+				<!--a href="#{{subGrupo.sbp_descricao}}">
+					<img src="<?=$urlBaseImg?>images/sem_imagem.png" width="110" height="90" ng-if="subGrupo.sbp_imagem == ''" style="border-radius: 6px; margin-top: 25px; margin-bottom: -25px;"><br>
+					<img src="<?=$urlBaseImg?>{{subGrupo.sbp_imagem}}" width="110" height="90" ng-if="subGrupo.sbp_imagem != ''" style="border-radius: 6px"><br>
+				</a-->
+
+				<a href="#" ng-click="navScroll(subGrupo.sbp_descricao)">
+					<img src="https://zmsys.com.br/images/sem_imagem_foods.jpg" width="110" height="90" ng-if="subGrupo.sbp_imagem == ''" style="border-radius: 6px; margin-top: 25px; margin-bottom: -25px;"><br>
+					<img src="<?=$urlBaseImg?>{{subGrupo.sbp_imagem}}" width="110" height="90" ng-if="subGrupo.sbp_imagem != ''" style="border-radius: 6px"><br>
+				</a>
+				<span>{{subGrupo.sbp_descricao}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="produtos">
+		<div ng-repeat="subPrd in produtos" id="{{subPrd.sbp_descricao}}" style="padding-bottom: 15px;">
+			<h3 ng-if="subPrd['produto'] != ''">{{subPrd.sbp_descricao}}</h3>
+			<div ng-repeat="produto in subPrd['produto']"  class="itens">
+				<div layout="row">
+					<div flex="30">
+						<md-card-title-media style="margin-right:10px; margin-top: 30px';">
+							<div class="md-media-sm card-media">
+								<a class="addProd" ng-click="addProd(produto,subPrd.sbp_tipo);" style="color: #000;">
+									<img src="<?=$urlBaseImg?>images/produto-sem-imagem-1.gif" ng-if="produto.pd_foto_url == '' || to_url == 'NULL' " style="border-radius: 7px" ng-click="detalhesDoItem()">
+									<img src="<?=$urlBaseImg?>{{produto.pd_foto_url}}"  ng-if="produto.pd_foto_url != ''" style="border-radius: 7px">
+								</a>
+							</div>
+						</md-card-title-media>
+					</div>
+					<div flex="60" flex-offset="5">
+						<div flex="" style="">
+							<!--a class="addProd" href="<?=$urlAssets?>produto/{{produto.pd_id}}/<?=$route['id']?>/<?=$route['token']?>" style="color: #000;"-->
+							<a class="addProd" ng-click="addProd(produto,subPrd.sbp_tipo);" style="color: #000;">
+								<span class="md-headline">{{produto.pd_desc}}</span><br>
+								<span class="md-subhead">{{produto.pd_composicao | limitTo:85}}{{produto.pd_composicao.length >= 85 ? '...' : ''}}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div layout="row" layout-align="space-around start" style="margin-left: 32%;" ng-if="subPrd.sbp_tipo == 'N'">
+					<div flex="" flex-offset="5">
+						<span class="md-headline">{{produto.pd_vista | currency: 'R$'}}</span>
+					</div>
+					<md-button class="md-raised md-accent" style="background-color:#F51929; border-radius: 6px; right: 0; text-transform: none; bottom: 10px;" ng-click="addProd(produto,subPrd.sbp_tipo);">Adicionar</i></md-button>
+				</div>
+				<div layout="row" layout-align="space-around start" style="margin-left: 10%;" ng-if="subPrd.sbp_tipo != 'N'">
+					<div flex="" flex-offset="5">
+						<span class="md-headline; font-size: 15px">A Partir de</span>
+						<span class="md-headline">{{produto.pd_val1 | currency: 'R$'}}</span>
+					</div>
+					<md-button class="md-raised md-accent" style="background-color:#F51929; border-radius: 6px; right: 0; text-transform: none; bottom: 10px;" ng-click="addProd(produto,subPrd.sbp_tipo);">Adicionar</i></md-button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sacola" ng-show="sacola.length > 0">
+		<div layout="row" layout-align="space-between center">
+			<div class="itensSacola">
+				<h3>{{totalSacolaQtn}} <span ng-if="sacola.length <= 1">Item </span>  <span ng-if="sacola.length > 1">Itens </span>  | {{totalSacolaValor | currency:'R$'}}</h3>
+			</div>
+			<div>
+				<md-button href="<?=$urlAssets?>sacola/<?=$route['id']?>/<?=$route['token']?>" class="md-raised md-accent" style="background-color:#F8F6F6; color: #F51929; border-radius: 10px; text-transform: none; font-size: 16px; font-weight: bold; padding: 0 15px 0 15px;">Ver Sacola</md-button>
+			</div>
+		</div>
+	</div>
+	
+

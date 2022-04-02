@@ -1,0 +1,52 @@
+BaseURL=https://sistema.zmpay.com.br/services/appzmpro/
+
+
+API consultaUsuarioSenha
+------------------------
+
+Descricao: retorna numero da empresa e código do usuario
+
+URL=BaseURL+'consultaUsuarioSenha.php'
+
+  Metodo - POST ou GET
+  Parametros - email, senha
+
+  Retornos de erros 
+	{"status":"ERRO","mensagem":"faltam parametros"}
+	{"status":"ERRO","mensagem":"usuario nao encontrado"}
+
+  Retornos de Sucesso
+	{"status":"OK","empresa":"9","usuario":"9","nome":"XXXXXXXXXX","ativo":"S","cod_depto":"9","nome_depto":"XXXXXXXXXXX","perfil":[{"ramo":"SSSS","mensagem":"SSSS","usuario":"SSSS","perfil":"SSSS","campanha":"SSSS","depto":"SSSS","cliente":"SSSS","chatbot":"S"}]}
+
+API listaCliente
+----------------
+
+Descricao: retorna a lista de clientes
+
+URL=BaseURL+'listaCliente.php'
+
+  Metodo - GET
+  Parametros - cod_empresa, id(opcional), nome(opcional)
+
+  Retornos de erros 
+	{"lista":[{""}]}
+
+  Retornos de Sucesso
+	{"lista":[{"id":"9","codigo":"9","nome":"XXXXXX","endereco":"XXXXX","end_num":"9","complemento":"XXXX","bairro":"XXXX","cidade":"XXXXXX","uf":"XX","cep":"99999-999","rg_ie":"XXXXXXX","cpf_cnpj":"XXXXXXX","fone":"(043)9999-9999","email":"xxxxx@xxx.com.br"}]}
+
+
+API listaVenda
+----------------
+
+Descricao: retorna a lista de clientes
+
+URL=BaseURL+'listaVenda.php'
+
+  Metodo - GET
+  Parametros - cod_empresa
+
+  Retornos de erros 
+	{"lista":[{""}]}
+
+  Retornos de Sucesso
+	{"lista":[{"id":"9","codigo":"9","nome":"XXXXXX","total":"XXXXX","tipo":"XX","emissao":"XXXX-XX-XX"}]}

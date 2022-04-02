@@ -1,0 +1,50 @@
+<style>
+    .card-header{
+        overflow: hidden;
+        margin-top:80px;
+        background: transparent;
+    }
+
+</style>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: fixed; z-index: 9999;">
+    <a href="<?=$urlAssets?>{{perfil[0].pe_site}}"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+<div class="card-header" style="background: transparent;">
+    <md-content ng-repeat="meusPedidos in meusPedidos">
+        <md-list style="border: 1px solid #ccc; padding:8px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); border-radius:6px; margin-bottom: 10px;">
+            <div class="md-list-item-text">
+
+                <div ng-if="meusPedidos.ped_finalizado == 'N'">
+                <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'S'">Pedido confirmado: {{meusPedidos.ped_doc}}</span>
+                <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'N'">Pedido ainda não visualizado: {{meusPedidos.ped_doc}}</span>
+                
+                <div ng-if="meusPedidos.ped_confirmado == 'S'">
+                    <span ng-if="meusPedidos.ped_status != 'Transito'">Pedido está em preparo</span>
+                    <span ng-if="meusPedidos.ped_status == 'Transito'">Pedido está em transito</span>
+                </div>
+                
+                </div>
+                <div ng-if="meusPedidos.ped_finalizado == 'S'">
+                    <span style="font-weight: bold; font-size:18px;">Pedido concluido: {{meusPedidos.ped_doc}}</span><br>
+                </div>
+
+                <md-list ng-repeat="pedidos_item in meusPedidos.pedidos_item">
+                    <div style="padding: 0;">
+                        <span style="padding:5px; border:1px solid #ccc; margin-right:8px;">{{pedidos_item.pdi_quantidade | number : 0 }} </span><span> {{pedidos_item.pdi_descricao}}</span>
+                    </div>
+                </md-list>
+
+                <div layout="row" layout-align="space-between center">
+                    <div>Valor total do pedido + Entrega</div>
+                    <div>{{meusPedidos.ped_total | currency: 'R$'}}</div>
+                </div>
+            </div>
+            
+            
+
+        </md-list>
+    </md-content>
+
+</div>

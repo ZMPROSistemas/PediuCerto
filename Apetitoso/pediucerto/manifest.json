@@ -1,0 +1,92 @@
+{
+  "lang" : "Portuguese",
+  "name" : "Apetitoso",
+  "scope" : "Apetitoso/pediucerto/estabelecimento/15/305DCB6C6577478E87F1117F0B6969CA",
+  "display" : "standalone",
+  "start_url" : "https://zmsys.com.br/Apetitoso/pediucerto/estabelecimento/15/305DCB6C6577478E87F1117F0B6969CA",
+  "short_name" : "Apetitoso",
+  "theme_color" : "#ff001e",
+  "description" : "Sistema De Delivery Apetitoso",
+  "orientation" : "portrait",
+  //"orientation": "portrait",
+  "background_color" : "#ff001e",
+  "icons" : [
+    {
+      "src": "Apetitoso.png",
+      "sizes": "44x44"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "1240x600"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "150x150"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "620x300"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "Apetitoso.png",
+      "sizes": "76x76"
+    }],
+  "url" : "https://zmsys.com.br/Apetitoso/pediucerto/estabelecimento/15/305DCB6C6577478E87F1117F0B6969CA",
+  "screenshots" : []
+}

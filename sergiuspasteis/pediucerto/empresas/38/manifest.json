@@ -1,0 +1,137 @@
+{
+  "lang" : "Portuguese",
+  "name" : "Mega Treino",
+  "scope" : "/AcademiaNova/",
+  "display" : "standalone",
+  "start_url" : "https://www.megatreino.com.br/AcademiaNova/",
+  "short_name" : "Mega Treino",
+  "theme_color" : "#2f4050",
+  "description" : "Sistema De Gerenciamento De Academia E Personal",
+  //"orientation": "portrait",
+  "background_color" : "#2f4050",
+  "icons" : [
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "44x44"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "1240x600"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "150x150"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "620x300"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "76x76"
+    }],
+  "url" : "https://www.megatreino.com.br/AcademiaNova/login.php",
+  "screenshots" : []
+}
+
+
+
+
+/*
+{
+  "name": "Mega Treino",
+  "short_name": "Mega Treino",
+  "description": "Sistema de gerenciamento de academia",
+  "theme_color": "#2f4050",
+  "background_color": "#2f4050",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
+{
+  "short_name": "Mega Treino",
+  "name": "Mega Treino",
+  "description": "Sistema de gerenciamento de academia",
+  "icons": [
+    {
+      "src": "imagens/logo_mega_mobile_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imagens/logo_mega_mobile_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "https://www.megatreino.com.br/AcademiaNova",
+  "background_color": "#2f4050",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2f4050"
+}
+
+*/

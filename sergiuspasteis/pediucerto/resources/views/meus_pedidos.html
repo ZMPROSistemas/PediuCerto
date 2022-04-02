@@ -1,0 +1,225 @@
+<style>
+    .card-header{
+        overflow: hidden;
+        background: transparent;
+    }
+    md-tabs.md-primary>md-tabs-wrapper {
+       
+        background-color: #f51929;
+        border-radius: 16px 16px 0 0;
+    }
+    md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+        color: rgb(10,4, 33);
+        background: rgb(27, 76, 33);
+    }
+
+    md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
+
+		color: rgb(0, 0, 0);
+	    background-color: rgba(255, 255, 255, 1);
+	    border-radius: 15px 15px 0 0;
+	    box-shadow: 5px 1px 1px 0 rgba(0,0,0,0.5);
+	    margin-left: 15px;
+	    margin-top: 5px;
+	}
+
+
+	md-tabs-canvas {
+        /*min-height: 50rem;
+        background-color: transparent;*/
+    }
+    md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+        min-height: 150vw;
+    }
+	md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
+		    color: rgba(255,255,255,1);
+	}
+
+	md-tabs:not(.md-no-tab-content):not(.md-dynamic-height){
+		
+	}
+	md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+		background: transparent;
+	}
+    md-tabs.md-default-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active, md-tabs.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active, md-tabs.md-default-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-default-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused, md-tabs.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused, md-tabs.md-default-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon, md-tabs.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon {
+        color:rgb(0,0,0);
+    }
+
+    .pedidoNaoVisualizado{
+        border-top: 10px rgba(91,91,91,1)  solid !important;
+    }
+    .pedidoPreparo{
+        border-top: 10px rgba(209, 105, 0,0.8)  solid !important;
+    }
+    .pedidoTransito{
+        border-top: 10px rgb(23, 65, 124)  solid !important;
+    }
+    .pedidoEntregue{
+        border-top: 10px rgb(0,104,28)  solid !important;
+    }
+    .pedidoRetornado{
+        border-top: 10px rgba(90, 90, 90,0.5)  solid !important;
+    }
+    .pedidoCancelado{
+        border-top: 10px rgba(176, 0, 5,0.5)   solid !important;
+    }
+
+
+    .textoPedidoNaoVisualizado{
+        color: rgba(91,91,91,1)  !important;
+    }
+    .textoPedidoPreparo{
+        color: rgba(209, 105, 0,0.8) !important;
+    }
+    .textoPedidoTransito{
+       color: rgb(23, 65, 124)  !important;
+    }
+    .textoPedidoEntregue{
+       color: rgb(0,104,28) !important;
+    }
+    .textoPedidoRetornado{
+        color: rgba(90, 90, 90,0.5) !important;
+    }
+    .textoPedidoCancelado{
+        color: rgba(176, 0, 5,0.5) !important;
+    }
+
+</style>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: inherit; z-index: 9999;">
+    <a href="" ng-click="navPage();" ng-if="page != null"><i class="fas fa-chevron-left" ></i></a>
+    <a href="<?=$urlAssets?>estabelecimento/{{empresa[0].em_cod}}/{{empresa[0].em_token}}" ng-if="page == null" style="color: #000;"><i class="fas fa-home"></i></a>
+</div>
+<h5 style="position: absolute; top:8px; left: 50px;">Meus Pedidos</h5>
+<div class="card-header" style="background: transparent;">
+ 
+    
+        <md-tabs class="md-primary" md-center-tabs>
+            <md-tab label="Em Andamento">
+                <md-content class="md-padding">
+                    <md-content ng-repeat="meusPedidos in meusPedidos | filter:{ped_finalizado : 'N'} | filter:{ped_empresa : empresa[0].em_cod}">
+
+                        <md-list ng-class="meusPedidos.ped_status == 'Novo' && meusPedidos.ped_confirmado == 'N' ? 'pedidoNaoVisualizado' : 
+                        meusPedidos.ped_status == 'Transito' ? 'pedidoTransito':
+                        meusPedidos.ped_status == 'Entregue' ? 'pedidoEntregue':
+                        meusPedidos.ped_status == 'Retornado' ? 'pedidoRetornado':
+                        meusPedidos.ped_status == 'Cancelado' ? 'pedidoCancelado':
+                        meusPedidos.ped_status == 'Preparando' ? 'pedidoPreparo':'pedidoPreparo'" style="border: 1px solid #ccc; padding:8px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); border-radius:6px; margin-bottom: 10px;">
+                            <div class="md-list-item-text">
+                               
+                                <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'S'">Pedido confirmado: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span>
+                                <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'N'">Pedido ainda não visualizado: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span>
+                                
+                                <div ng-class="meusPedidos.ped_status == 'Novo' && meusPedidos.ped_confirmado == 'N' ? 'textoPedidoNaoVisualizado' : 
+                                meusPedidos.ped_status == 'Transito' ? 'textoPedidoTransito':
+                                meusPedidos.ped_status == 'Entregue' ? 'textoPedidoEntregue':
+                                meusPedidos.ped_status == 'Retornado' ? 'textoPedidoRetornado':
+                                meusPedidos.ped_status == 'Cancelado' ? 'textoPedidoCancelado':
+                                meusPedidos.ped_status == 'Preparando' ? 'textoPedidoPreparo':'textoPedidoPreparo'" ng-if="meusPedidos.ped_confirmado == 'S'" style="font-size:18px; font-weight: bold;">
+                                    <span ng-if="meusPedidos.ped_status == 'Novo'">Pedido está em preparo</span>
+                                    <span ng-if="meusPedidos.ped_status == 'Transito'">Pedido está em transito</span>
+                                    <span ng-if="meusPedidos.ped_status == 'Entregue'">Pedido já foi entregue</span>
+                                    <span ng-if="meusPedidos.ped_status == 'Retornado'">Pedido foi retornado</span>
+                                    <span ng-if="meusPedidos.ped_status == 'Preparando'">Pedido em preparo</span>
+                                    <span ng-if="meusPedidos.ped_status == 'Cancelado'">Pedido foi cancelado</span>
+                                </div>
+                                
+                                
+                                <md-list ng-repeat="pedidos_item in meusPedidos.pedidos_item">
+                                    <div style="padding: 0;">
+                                        <span style="padding:5px; border:1px solid #ccc; margin-right:8px;">{{pedidos_item.pdi_quantidade | number : 0 }} </span><span> {{pedidos_item.pdi_descricao}}</span>
+                                    </div>
+                                </md-list>
+                
+                                <div layout="row" layout-align="space-between center">
+                                    <div>Valor total do pedido + Entrega</div>
+                                    <div>{{meusPedidos.ped_total | currency: 'R$'}}</div>
+                                </div>
+                            </div>
+                        </md-list>
+
+                    </md-content>
+
+                </md-content>
+            </md-tab>
+
+            <md-tab label="Concluídas">
+                <md-     class="md-padding">
+                    <md-content ng-repeat="meusPedidos in meusPedidos | filter:{ped_finalizado : 'S'} | filter:{ped_empresa : empresa[0].em_cod}">
+                        <md-list ng-class="meusPedidos.ped_status == 'Novo' && meusPedidos.ped_confirmado == 'N' ? 'pedidoNaoVisualizado' : 
+                        meusPedidos.ped_status == 'Transito' ? 'pedidoTransito':
+                        meusPedidos.ped_status == 'Entregue' ? 'pedidoEntregue':
+                        meusPedidos.ped_status == 'Retornado' ? 'pedidoRetornado':
+                        meusPedidos.ped_status == 'Cancelado' ? 'pedidoCancelado':
+                        meusPedidos.ped_status == 'Preparando' ? 'pedidoPreparo':'pedidoPreparo'" style="border: 1px solid #ccc; padding:8px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); border-radius:6px; margin-bottom: 10px;">
+                            <div class="md-list-item-text">
+                                
+                               <span style="font-weight: bold; font-size:18px;">Pedido concluido: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span><br>
+                                
+                               <div ng-class="meusPedidos.ped_status == 'Novo' && meusPedidos.ped_confirmado == 'N' ? 'textoPedidoNaoVisualizado' : 
+                               meusPedidos.ped_status == 'Transito' ? 'textoPedidoTransito':
+                               meusPedidos.ped_status == 'Entregue' ? 'textoPedidoEntregue':
+                               meusPedidos.ped_status == 'Retornado' ? 'textoPedidoRetornado':
+                               meusPedidos.ped_status == 'Cancelado' ? 'textoPedidoCancelado':
+                               meusPedidos.ped_status == 'Preparando' ? 'textoPedidoPreparo':'textoPedidoPreparo'" ng-if="meusPedidos.ped_confirmado == 'S'" style="font-size:18px; font-weight: bold;">
+                                   <span ng-if="meusPedidos.ped_status == 'Novo'">Pedido está em preparo</span>
+                                   <span ng-if="meusPedidos.ped_status == 'Transito'">Pedido está em transito</span>
+                                   <span ng-if="meusPedidos.ped_status == 'Entregue'">Pedido já foi entregue</span>
+                                   <span ng-if="meusPedidos.ped_status == 'Retornado'">Pedido foi retornado</span>
+                                   <span ng-if="meusPedidos.ped_status == 'Preparando'">Pedido em preparo</span>
+                                   <span ng-if="meusPedidos.ped_status == 'Cancelado'">Pedido foi cancelado</span>
+                               </div>
+                               
+                                <md-list ng-repeat="pedidos_item in meusPedidos.pedidos_item">
+                                    <div style="padding: 0;">
+                                        <span style="padding:5px; border:1px solid #ccc; margin-right:8px;">{{pedidos_item.pdi_quantidade | number : 0 }} </span><span> {{pedidos_item.pdi_descricao}}</span>
+                                    </div>
+                                </md-list>
+                
+                                <div layout="row" layout-align="space-between center">
+                                    <div>Valor total do pedido + Entrega</div>
+                                    <div>{{meusPedidos.ped_total | currency: 'R$'}}</div>
+                                </div>
+                            </div>
+                        </md-list>
+                    </md-content>
+                </md-content>
+            </md-tab>
+            
+        </md-tabs>
+
+        <!--md-list style="border: 1px solid #ccc; padding:8px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); border-radius:6px; margin-bottom: 10px;">
+            <div class="md-list-item-text">
+
+                <div ng-if="meusPedidos.ped_finalizado == 'N'">
+                    <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'S'">Pedido confirmado: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span>
+                    <span style="font-weight: bold; font-size:18px;" ng-if="meusPedidos.ped_confirmado == 'N'">Pedido ainda não visualizado: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span>
+                    
+                    <div ng-if="meusPedidos.ped_confirmado == 'S'">
+                        <span ng-if="meusPedidos.ped_status != 'Transito'">Pedido está em preparo</span>
+                        <span ng-if="meusPedidos.ped_status == 'Transito'">Pedido está em transito</span>
+                    </div>
+                
+                </div>
+                <div ng-if="meusPedidos.ped_finalizado == 'S'">
+                    <span style="font-weight: bold; font-size:18px;">Pedido concluido: {{meusPedidos.ped_doc}} - Data: {{meusPedidos.ped_emis | date:'dd/MM/yyyy'}}</span><br>
+                </div>
+
+                <md-list ng-repeat="pedidos_item in meusPedidos.pedidos_item">
+                    <div style="padding: 0;">
+                        <span style="padding:5px; border:1px solid #ccc; margin-right:8px;">{{pedidos_item.pdi_quantidade | number : 0 }} </span><span> {{pedidos_item.pdi_descricao}}</span>
+                    </div>
+                </md-list>
+
+                <div layout="row" layout-align="space-between center">
+                    <div>Valor total do pedido + Entrega</div>
+                    <div>{{meusPedidos.ped_total | currency: 'R$'}}</div>
+                </div>
+            </div>
+            
+            
+
+        </md-list-->
+    
+
+</div>

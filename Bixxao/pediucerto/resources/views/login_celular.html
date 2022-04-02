@@ -1,0 +1,46 @@
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+
+
+</style>
+
+<div flex="15" style="margin-top:20px; font-size: 15px; margin-left: 15px;">
+	<a href="<?=$urlAssets?>sacola/{{empresa[0].em_cod}}/{{empresa[0].em_token}}"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+<div layout="row">
+
+	<div class="card-header" style="width: 90%; border: none; background-color: transparent;">
+
+		<div flex="90" flex-offset="0">
+			
+			<div layout="row" style="margin-top:15px;">
+				<h4> Qual o número do seu celular? </h4>
+			</div>
+
+		</div>
+
+		<form class="form-inline" style="margin-top:15px;">
+			<img src="<?=$urlAssets?>assets/images/bandeira@2x.png" alt="" style="width: 10%;"> +55
+			<input type="text" inputmode="numeric" class="form-control" placeholder="(00) 0000-0000" onkeyup="mascaraCelular( this, mtel );" maxlength="15" ng-model="numero" style="margin-left: 10px; width: 75%; height: 45px;">
+		</form>
+
+		<div style="margin-top: 20px;">
+			<span style="font-size: 15px;">
+				Como deseja receber o código?
+			</span>
+		</div>
+
+		<div style="margin-top:10px; text-align: center;">
+			<span>
+				<md-button  class="md-raised md-primary" style="width: 100%; border-radius: 6px; margin-top:15px;" ng-click="sendSMS(numero)" style="font-size: 12px;">Receber código por SMS</md-button>
+			</span>
+		</div>
+
+	</div>
+
+
+</div>

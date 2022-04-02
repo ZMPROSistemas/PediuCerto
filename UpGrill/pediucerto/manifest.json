@@ -1,0 +1,91 @@
+{
+  "lang" : "Portuguese",
+  "name" : "UpGrill",
+  "scope" : "UpGrill/pediucerto/estabelecimento/11/8D75444F2B3149C5AD43975ACE8C7ADC",
+  "display" : "standalone",
+  "start_url" : "https://zmsys.com.br/UpGrill/pediucerto/estabelecimento/11/8D75444F2B3149C5AD43975ACE8C7ADC",
+  "short_name" : "UpGrill",
+  "theme_color" : "#ff001e",
+  "description" : "Sistema De Delivery Up Grill",
+  
+  "background_color" : "#ff001e",
+  "icons" : [
+    {
+      "src": "upgrill.png",
+      "sizes": "44x44"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "1240x600"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "150x150"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "620x300"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "upgrill.png",
+      "sizes": "76x76"
+    }],
+  "url" : "https://zmsys.com.br/UpGrill/pediucerto/estabelecimento/11/8D75444F2B3149C5AD43975ACE8C7ADC",
+  "screenshots" : []
+}

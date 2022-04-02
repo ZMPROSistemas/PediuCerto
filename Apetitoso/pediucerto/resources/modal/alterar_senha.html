@@ -1,0 +1,146 @@
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+    .container-app {
+		overflow: hidden;
+	}
+	.card-header{
+		width: 100%;
+		margin:0 auto;
+        border: none;
+	}
+
+    .emp{
+		margin: 0 auto;
+		font-size:28px;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 0px;
+		color: #000000;
+    }
+    .form-control{
+        text-transform: capitalize;
+    }
+   
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width:500px;
+        height:350px;
+
+    }
+
+    md-radio-button{
+        border: 1px #ccccccd9 solid;
+        border-radius: 6px;
+        padding: 8px;
+        background-color: #dcdcdc7d;
+    }
+
+    md-radio-button .md-container {
+        margin-left: 10px;
+    }
+    .md-fab{
+        display:none;
+    }
+
+    .form-row{
+      margin-bottom: 20px;
+    }
+    .form-control{
+      border-radius: 6px;
+    }
+
+    
+</style>
+
+<div class="modal fade" id="trocarsenha" tabindex="-1" aria-labelledby="trocarsenha" aria-hidden="true" data-backdrop="static">
+    <?php
+        include_once("resources/modal/aguarde.html");
+    ?>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                
+
+                <center><h4 style="top:15px;">Alterar Senha</h4></center>
+
+                <div class="card-header" style="background-color: transparent;">
+
+                    <div class="form-row">
+                        <div class="col">
+                            <!--img src="<?=$urlAssets?>assets/images/bandeira@2x.png" alt="" style="width: 10%;"> +55-->
+                            <label class="loginText" style="font-size:16px; font-weight:bold;">Telefone(*)</label>
+                            <input type="text" inputmode="numeric" class="form-control form-control-lg" placeholder="(00) 0000-0000" onkeyup="mascaraCelular( this, mtel );" maxlength="15" ng-model="numero"  autocomplete="off" style="">
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <md-button class="md-primary md-raised"  ng-click="sendSMS(numero, cad.nome)" ng-if="enviarCodigo == true" style="background-color: #4285F4; width:100%; margin-left: -2px; border-radius: 6px; height: 48px; font-size: 18px; font-weight: bold;">Enviar código</md-button>
+                            <!--span ng-if="enviarCodigo == false">Reenviar novo código {{tempoCodigo}}S</span-->
+                        </div>
+                    </div>
+
+                    
+                    <div ng-if="validaCodigo == true">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="loginText" style="font-size:16px; font-weight:bold;">Código(*)</label>
+                                <input type="text" inputmode="numeric" class="form-control form-control-lg" style="border:1px rgba(0,0,0, 0.4) solid; letter-spacing: 3.5rem; margin-top:15px; text-align: center;" maxlength="5" ng-model="codigo" autocomplete="off" onkeypress="return onlynumber();">
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="col">
+                            <md-button class="md-accent md-raised" ng-click="verificar(cad,codigo)" style="width:100%; margin-left: -2px; border-radius: 6px; height: 48px; font-size: 18px; font-weight: bold;">Verificar</md-button>
+                                <center><p style="font-size:18px; font-weight: bold; color:#026923">Um Código sera enviado em seu WhatsApp </p><i class="fab fa-whatsapp-square" style="font-size:50px; color:#026923"></i></center>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" ng-if="pass == true">
+                        <div class="col">
+                            
+                            <label class="loginText" style="font-size:16px; font-weight:bold;">Senha(*)</label>
+                            <input type="password" class="form-control form-control-lg" name="pass" ng-model="cad.pass" autocomplete="off" autocomplete="off" style="text-transform: none;">
+                            <div ng-if="msgPass" style="{{msgStylePass}} font-size:12px; margin-top=-45px;">{{userMsgPass}}</div>
+                            
+                        </div>
+                
+                        <div class="col">
+                
+                            <label class="loginText" style="font-size:16px; font-weight:bold;">Confirmar Senha(*)</label>
+                            <input type="password" class="form-control form-control-lg" name="pass2" ng-model="cad.pass2" autocomplete="off" ng-blur="verPAss(cad.pass, cad.pass2)" ng-enter="verPAss(cad.pass, cad.pass2)" autocomplete="off" style="text-transform: none;">
+                            <div ng-if="msgPass2" style="{{msgStyle}} font-size:12px; margin-top=-45px;">{{userMsgPass2}}</div>
+                            
+                        </div>
+                    
+                    </div>
+
+                    <div class="form-row" ng-if="cadastrar == true">
+                        <div class="col">
+                            <md-button class="md-accent md-raised" ng-click="alterarSenha(cad)" style="width:100%; margin-left: -2px; border-radius: 6px; height: 48px; font-size: 18px; font-weight: bold;">Cadastrar</md-button>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

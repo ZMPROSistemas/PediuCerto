@@ -1,0 +1,92 @@
+{
+  "lang" : "Portuguese",
+  "name" : "Bixxão Lanches",
+  "scope" : "Bixxao/pediucerto/estabelecimento/73/DA55922D36D7ECFE11458D5973F8F7AD",
+  "display" : "standalone",
+  "start_url" : "https://zmsys.com.br/Bixxao/pediucerto/estabelecimento/73/DA55922D36D7ECFE11458D5973F8F7AD",
+  "short_name" : "Bixxão Lanches",
+  "theme_color" : "#ff001e",
+  "description" : "Pediu Certo seu aplicativo de pedidos",
+  "orientation" : "portrait",
+  //"orientation": "portrait",
+  "background_color" : "#ff001e",
+  "icons" : [
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "44x44"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "1240x600"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "150x150"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "620x300"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "Pediu_Certo_Icone.png",
+      "sizes": "76x76"
+    }],
+  "url" : "https://zmsys.com.br/Bixxao/pediucerto/estabelecimento/73/DA55922D36D7ECFE11458D5973F8F7AD",
+  "screenshots" : []
+}

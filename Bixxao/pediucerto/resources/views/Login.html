@@ -1,0 +1,203 @@
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+	.container-app {
+		overflow: hidden;
+	}
+	.card-header{
+		width: 400px;
+		margin:0 auto;
+	}
+	.emp{
+		margin: 0 auto;
+		font-size:28px;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 0px;
+		color: #000000;
+	}
+	.loginText{
+		font-size: 18px;
+		color: #000000;
+		/*font-weight: bold;*/
+	}
+	.form-control{
+		border: 2px solid #7F7F7F;
+		height:63px;
+		border-radius: 6px;
+		opacity: 1;
+	}
+	.btn-loogin{
+		border: 2px solid #707070; 
+		border-radius: 6px; 
+		width: 50%; 
+		height: 55px;
+	}
+</style>
+
+
+	<div flex="15" style="margin-top:20px; font-size: 15px; margin-left: 15px;">
+		<a href="<?=$urlAssets?>sacola/{{empresa[0].em_cod}}/{{empresa[0].em_cod}}"><i class="fas fa-chevron-left" ></i></a>
+	</div>
+
+	<div class="card-header" style="margin-top:10%; background-color: transparent;">
+		
+		<div class="emp">Entrar</div>
+
+		<div style="margin-top:20px;">
+			<span class="loginText">Email ou Nome de Usuário</span><br>
+			<input type="text" class="form-control" name="email" ng-model="emailUser">
+		</div>
+		
+		<div id="senha" style="margin-top:20px;">
+			<span class="loginText">Senha</span><br>
+
+			
+				<div class="input-group">
+					<input type="password" class="form-control" name="senha" style="border-right: none;" ng-model="senha">
+					<div class="input-group-append">
+						<span class="input-group-text" style="background-color: transparent; border: 1.5px solid #7F7F7F; border-left: none;"><button class="btn" style="border:none; padding: 0;"><i class="fas fa-eye-slash"></i></button></span>
+					</div>
+				</div>
+			<div style="text-align: right; margin:15px 0 15px 0;">
+				<span class="loginText" style="right: 0; font-weight: bold;">Esqueceu a senha?</span><br>
+			</div>
+			
+		</div>
+
+		<div>
+			<md-button class="md-accent md-raised" style="margin-left: -2px; width: 100%; border-radius: 6px; height:45px; background-color:  #F51929;" ng-click="entrar(emailUser, senha)">Entrar</md-button>
+		</div>
+
+		<div style="text-align: center; margin-top: 15px;;">
+			<span class="" style="right: 0; font-weight: bold; letter-spacing: 0px; color: #818181; opacity: 1;">OU</span><br>
+		</div>
+
+		<div layout="row" style="margin-top: 15px; align-content: left;">
+			<!--div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onFailure" data-width="350" data-theme="dark" data-height="50" style="margin:0 auto"></div-->
+			<div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onFailure" data-width="350" data-theme="dark" data-height="50" style="margin:0 auto"></div>
+			<!--div id="meu-botao" data-onsuccess="onSignIn" >Fazer login com: </div> <br-->
+
+		</div>
+
+		<div layout="row" style="margin-top: 15px; align-content: left;">
+
+			<!--div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width="350" style="height: 50px;"></div-->
+
+			<!--md-button class="md-raised btn-loogin"><img src="http://sistema.zmpro.com.br/images/google.png" alt="" width="30px;"> Google</md-button-->
+			<!--md-button class="md-raised btn-loogin"><img src="http://sistema.zmpro.com.br/images/facebook.png" alt="" width="30px;"> Facebook</md-button-->
+		</div>
+
+		<div layout="row">
+			<md-button href="<?=$urlAssets?>login_celular" class="md-raised btn-loogin" style="width:100%; height: 50px;"> Celular</md-button>
+			<!--fb:login-button scope="public_profile,email"  onlogin="checkLoginState();"></fb:login-button-->
+		</div>
+		<!--div id="log"></div-->
+	
+	</div>
+	
+
+<script>
+	/*
+	function renderButton() {
+    gapi.signin2.render('meu-botao', {
+        'scope': 'email profile https://www.googleapis.com/auth/plus.login', // solicitando acesso ao profile e ao e-mail do usuário
+        'width': 350,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+}
+*/
+/**
+  Função executada quando o login é efetuado com sucesso
+*/
+function init() {
+  gapi.load('auth2', function() {
+	/* Ready. Make a call to gapi.auth2.init or some other API */
+	client_id : '921121352932-alvivh8sthstjh4ia4c7crvdujrcum0t.apps.googleusercontent.com'
+
+  });
+}
+
+
+/*
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+  	var ID = profile.getId();
+	var Name = profile.getName();
+	var Image = profile.getImageUrl();
+	var email =  profile.getEmail();
+	// Recuperando o token do usuario. Essa informação você necessita passar para seu backend
+	var id_token = googleUser.getAuthResponse().id_token;
+
+	var user = {
+		ID: ID,
+		nome : Name,
+		image : Image,
+		email : email,
+		id_token : id_token
+	}
+
+	$.post('<?=$urlAssets?>services/valida.php', user, function(response){
+
+	});
+
+	document.getElementById('log').innerHTML = Name;
+}
+*/
+
+/*
+  Função executada quando ocorrer falha no logn
+*/
+function onFailure(error) {
+	console.log(error);
+	document.getElementById('log').innerHTML = error;
+}
+/*
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2669355246658695',
+      cookie     : true,
+      xfbml      : true,
+      version    : '8.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+ /*  
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+
+	console.log(response);
+});
+
+*/
+
+</script>

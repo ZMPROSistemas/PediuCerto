@@ -1,0 +1,142 @@
+<style>
+    .form-row{
+      margin-bottom: 20px;
+    }
+    .form-control{
+      border-radius: 6px;
+    }
+</style>
+<div class="modal fade" id="atualizaEnd" tabindex="-1" aria-labelledby="atualizaEnd" aria-hidden="true"  data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="atualizaEnd">Endereço para entrega</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="card-header" id="pac-card" style="background-color: transparent; margin-top: -15px;">
+
+            <div class="form-row" style="margin-top: 40px;">
+              
+                  <div class="col-4">
+                      <label class="loginText" style="text-size:18px; font-weight:bold;">CEP</label>
+                      <input type="text" class="form-control form-control-lg" name="cep" ng-model="end.cep" autocomplete="none" ng-blur="pesquisarCEP(end.cep)">
+                      
+                  </div>
+                  
+                  <div class="col">
+                    <label class="loginText" style="text-size:18px; font-weight:bold;">Rua(*)</label>
+                    <input id="pac-input" type="text" class="form-control form-control-lg" name="adress" ng-model="end.adress" autocomplete="off">
+                    <div ng-if="msgAdress" style="{{msgStyleAdress}} font-size:12px; margin-top=-45px;">{{userMsgAdress}}</div>
+
+                  </div>
+                    
+                  
+              
+          </div>
+          
+              
+      
+          <div class="form-row">
+              
+            <div class="col">
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Bairro(*)</label>
+                <input type="text" class="form-control form-control-lg" name="bairro" ng-model="end.bairro" autocomplete="off">
+                <div ng-if="msgBairro" style="{{msgStyleBairro}} font-size:12px; margin-top=-45px;">{{userMsgBairro}}</div>
+            </div>
+              
+            <div class="col-3">
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Número(*)</label>
+                <input type="text" class="form-control form-control-lg" name="numero" ng-model="end.numero" autocomplete="off">
+                <div ng-if="msgNumero" style="{{msgStyleNumero}} font-size:12px; margin-top=-45px;">{{userMsgNumero}}</div>
+            </div>
+              
+          </div>
+      
+          <div class="form-row">
+      
+            <div class="col">
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Cidade(*)</label>
+                <input type="text" class="form-control form-control-lg" name="cidade" ng-model="end.cidade" autocomplete="hidden">
+                <div ng-if="msgCidade" style="{{msgStyleCidade}} font-size:12px; margin-top=-45px;">{{userMsgCidade}}</div>
+            </div>
+              
+              
+            <div class="col-3">
+                <label class="loginText" style="text-size:18px; font-weight:bold;">UF(*)</label>
+                <input type="text" class="form-control form-control-lg" name="uf" ng-model="end.uf" placeholder="Ex: PR" maxlength="2" style="text-transform: uppercase;" autocomplete="off">
+                <div ng-if="msgUf" style="{{msgStyleUf}} font-size:12px; margin-top=-45px;">{{userMsgUf}}</div>
+            </div>
+              
+          </div>
+      
+            <div class="form-row">
+                <div class="col">
+                    <div id="pac-container">
+                        <label class="loginText" style="text-size:18px; font-weight:bold;">Complemento</label>
+                        <input id="pac-input" type="text" class="form-control form-control-lg" name="adress" ng-model="end.comp" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+      
+          <div id="map"></div>
+          <div id="infowindow-content">
+              <img src="" width="16" height="16" id="place-icon" />
+              <span id="place-name" class="title"></span><br />
+              <span id="place-address"></span>
+          </div>
+
+        </div>
+
+
+<!--
+
+          <div style="margin-top:20px;" id="pac-container">
+              <label class="loginText" style="text-size:18px; font-weight:bold;">Rua(*)</label>
+              <input id="pac-input" type="text" class="form-control" name="adress" ng-model="end.adress" value="">
+          </div>
+  
+          <div class="form-row">
+  
+              <div class="col">
+                  <label class="loginText" style="text-size:18px; font-weight:bold;">Bairro(*)</label>
+                  <input type="text" class="form-control" name="bairro" ng-model="end.bairro">
+              </div>
+  
+              <div class="col">
+                  <label class="loginText" style="text-size:18px; font-weight:bold;">Número(*)</label>
+                  <input type="text" class="form-control" name="numero" ng-model="end.numero">
+              </div>
+              
+          </div>
+  
+          <div class="form-row">
+  
+              <div class="col">
+                  <label class="loginText" style="text-size:18px; font-weight:bold;">Cidade(*)</label>
+                  <input type="text" class="form-control" name="cidade" ng-model="end.cidade">
+              </div>
+  
+              <div class="col">
+                  <label class="loginText" style="text-size:18px; font-weight:bold;">UF(*)</label>
+                  <input type="text" class="form-control" name="uf" ng-model="end.uf" placeholder="Ex: PR" maxlength="2" style="text-transform: uppercase;">
+              </div>
+              
+          </div>
+  
+          <div id="pac-container">
+              <label class="loginText" style="text-size:18px; font-weight:bold;">Complemento</label>
+              <input id="pac-input" type="text" class="form-control" name="adress" ng-model="end.comp">
+          </div>
+        -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="selecionarEndereco(end)">Savar</button>
+      </div>
+    </div>
+  </div>
+</div>

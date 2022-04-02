@@ -1,0 +1,127 @@
+<style>
+
+.itens{
+	border-radius: 6px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.1), 0 2px 5px -1px rgba(0,0,0,0.1);
+	margin-top: 15px;
+	padding-top: 10px;
+		
+}
+.card-media img{
+	width: 110px;
+	margin-left: 15px;
+	border-radius: 6px;
+	border: 1px #b4b5b6 solid;
+}
+.log-align {
+    margin-top: 30px !important;
+}
+</style>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: inherit; z-index: 9999;">
+    <a href="<?=$urlAssets?>sacola/<?=$route['id']?>/<?=$route['token']?>"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+
+<h5 style="position: absolute; top:8px; left: 50px;">Detalhes do item</h5>
+
+
+<div class="card-header" style="width:100%; height:10%; color:#fff; background-color:#F51929; position: fixed; z-index: 9999; bottom:0">
+    <div layout="row" layout-align="space-between center" style="font-size:20px; font-weight:bold;">
+        <div>Subtotal</div>
+        <div>{{item.v_total | currency: 'R$'}}</div>
+        <div>
+            <a href="<?=$urlAssets?>sacola/<?=$route['id']?>/<?=$route['token']?>" class="btn" style="margin-bottom: 5px; color:#F51929; background-color:#fff;" ng-click="addItem();" ng-show="btnDisable == true"><i class="fas fa-shopping-bag"></i> Confirmar</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="card-header" ng-class="perfil != null ? '': 'log-align'" style="margin-top:5%; background-color: transparent;">
+    <div class="produtos" class="itens">
+
+        <div layout="row">
+
+            <div flex="30">
+                <md-card-title-media style="margin-right:10px; margin-top: 30px';">
+                    <div class="md-media-sm card-media">
+                        <img src="<?=$urlBaseImg?>images/produto-sem-imagem-1.gif" ng-if="item.pd_foto_url == '' || item.pd_foto_url == 'NULL' " style="border-radius: 7px">
+                        <img src="<?=$urlBaseImg?>{{item.pd_foto_url}}" ng-if="item.pd_foto_url != ''" style="border-radius: 7px">
+                    </div>
+                </md-card-title-media>
+            </div>
+            
+            <div flex="60" flex-offset="5">
+                <div flex="" style="">
+                    <span class="md-headline" style="font-weight: bold;">{{item.pd_desc}}</span><br>
+                    <span class="md-subhead">{{item.pd_composicao}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="card-header" style="background: transparent;">
+            <div class="input-group" style="width: 100%;" ng-init="obs = item.pd_obs">
+                <textarea class="form-control" placeholder="Observação" style="height: 40px;" ng-model="obs" ng-blur="addObs(obs)">{{item.pd_obs}}</textarea>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="far fa-edit"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header" style="background: transparent; margin-bottom:30px;">
+            <div ng-repeat="adicionaisExecoes in adicionaisExecoes | filter:{pde_tipo : 'A'}">
+                
+                <div class="card-header" layout="row" layout-align="space-between center" style="margin-bottom:5px;">
+
+                    <div flex="70">
+                        <h5>{{adicionaisExecoes.ex_desc}}</h5>
+                        <span>{{adicionaisExecoes.ex_valor | currency: 'R$ '}}</span>
+                    </div>
+
+                    <div>
+                        <div layout="row" layout-align="space-between center" style="margin-left: 5px;">
+
+                            <div>
+                                <button class="btn" style="color: #fff; background-color:#F51929; border-radius:50px; margin-right: 8px;" ng-click="removerAdicional(adicionaisExecoes)">
+                                    <span class="">
+                                    <i class="fas fa-minus"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            
+                            <div>
+                                <span style="font-weight:bold;">{{adicionaisExecoes.ex_qts}}</span>
+                            </div>
+
+                            <div>
+
+                                <button class="btn" style="color: #fff; background-color:#F51929; border-radius:50px; margin-left: 8px;" ng-click="addAdicional(adicionaisExecoes)">
+                                <span class="">
+
+                                <i class="fas fa-plus"></i>
+                                </span>
+                                
+                                </button>
+
+                            </div>  
+                            
+
+                        </div>
+                        
+                       
+                    </div>
+
+                </div>
+                
+                
+            </div>
+        </div>
+
+       
+
+
+    </div>
+    
+</div> 

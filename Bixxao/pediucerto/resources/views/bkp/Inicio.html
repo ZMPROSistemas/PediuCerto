@@ -1,0 +1,227 @@
+
+<style>
+
+@font-face {
+   font-family:Poppins-Medium;
+   src: url('Font/Poppins-Medium.ttf');
+}
+
+.card-header{
+    top: 15px;
+    left: 0px;
+    width: 100%;
+    height: 231px;
+    padding: 0;
+    overflow: hidden;
+  
+    background: var(--unnamed-color-c2c2c2) 0% 0% no-repeat padding-box;
+    background: #C2C2C2 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }
+  
+  .card-header img{
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .estabelecimento{
+	position: relative;
+    top: -20px;
+	margin:0 auto;
+    width: 90%;
+	height: 206px;
+	padding: 16px 14px;
+  
+    border: 1px solid var(--unnamed-color-efefef);
+    background: #EFEFEF 0% 0% no-repeat padding-box;
+    border: 1px solid #EFEFEF;
+    border-radius: 6px;
+    opacity: 1;
+  }
+  .emp{
+	font-size:28px;
+	text-align: left;
+	font-weight: bold;
+	text-align: left;
+	letter-spacing: 0px;
+	color: #000000;
+  }
+  .fa-heart{
+	color: #F51929;
+	text-align: right;
+  }
+  .emp-end, .emp-entrega{
+	font-size: 14px;
+	color: #000000;
+	opacity: 0.5;
+  }
+  .subGroupList{
+	 
+	  
+	  overflow-x: auto;
+	  overflow-y: hidden;
+	  background-color: rgba(0, 0, 0, 0.1);
+	  position: relative;
+  }/*
+  .subGroupList img{
+	 float: left;
+	 margin:5px;
+  }*/
+  .emp-entrega{ }
+
+  #myDIV {
+  /*height: 100px;*/
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0 auto;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y:hidden;
+  background-color:rgb(255, 255, 255);
+  padding: 10px;
+}
+
+#content {
+ /* height: 800px;
+ width: 3000px;*/
+  background-color: #fff;
+}
+.em_ab{
+	margin: 0 auto; 
+	margin-top: 8px;	
+	padding:5px 60px 5px 60px;
+	border: 3px dashed rgb(19, 130, 4);
+	border-radius:8px;
+	
+}
+.em_fc{
+	margin: 0 auto; 
+	margin-top: 8px;	
+	padding:5px 60px 5px 60px;
+	border: 3px dashed rgb(255, 10, 4);
+	border-radius:8px;
+}
+
+.produtos{
+	position: relative;
+	margin-top: 15px;
+	left: 15px;
+	width: 90%;
+
+}
+
+  </style>
+
+	<div ng-controller="PediuCertoCtrl" class="container-app">
+		
+		<div class="card-header">
+			
+			<img src="{{empresa[0].em_foto_url}}">
+			
+		</div>
+
+
+
+		<div class="estabelecimento">
+			<div layout="row">
+				<div flex-gt-sm="76" flex="66">
+					<span class="emp">{{empresa[0].em_fanta}}</span>
+				</div>
+				<div flex-gt-sm="23" flex="33">
+					<i class="far fa-heart"></i>
+				</div>
+			</div>
+
+			<div layout="row" style="">
+				<div flex="">
+					<span class="emp-end">{{empresa[0].em_cid}}, </span>
+				
+					<span class="emp-end">{{empresa[0].em_bairro}}</span>
+				</div>
+			</div>
+
+			<div layout="row">
+				<div flex-gt-sm="76" style="margin: 0 auto; margin-top: 20px;">
+					<span class="emp-entrega">45 - 60 Hora </span>
+					<span class="emp-entrega"> R$ 5,00 (Entrega)</span>
+				</div>
+			</div>
+
+			<div layout="row">
+				<div flex-gt-sm="76" style="" ng-class="empresa[0].em_aberto == 'S' ? 'em_ab':'em_fc'">
+					Estabelecimento <span ng-if="empresa[0].em_aberto == 'S'"> Aberto</span>
+					<span ng-if="empresa[0].em_aberto == 'N'"> Fechado</span>
+					<span ng-if="empresa[0].em_aberto == ''"> Fechado</span>
+				</div>
+			</div>
+
+			
+
+			
+
+			
+		</div>
+		
+		<div id="myDIV">
+			<div id="content" ng-repeat="subGrupo in subGrupo" style=" width: {{totalSubGupo}}px;">
+				
+				<div style="float: left; margin-right:25px; text-align:center;">
+
+					<a href="">
+						<img src="http://sistema.zmpro.com.br/images/sem_imagem.png" width="110" height="90" ng-if="subGrupo.sbp_imagem == ''" style="border-radius: 6px; margin-top: 25px; margin-bottom: -25px;"><br>
+						<img src="{{subGrupo.sbp_imagem}}" width="110" height="90" ng-if="subGrupo.sbp_imagem != ''" style="border-radius: 6px"><br>
+					</a>	
+					<span>{{subGrupo.sbp_descricao}}</span>
+					
+
+				</div>
+				
+				
+			</div>
+		</div>
+		
+		<div class="produtos">
+
+			<div id="#{{subGrupo.sbp_id}}" ng-repeat="subPrd in produtos">
+				<h4 ng-if="subPrd['produto'] != ''">{{subPrd.sbp_descricao}}</h4>
+
+				
+					<div ng-repeat="produto in subPrd['produto']">
+
+						<div flex-xs flex-gt-xs="50" layout="column" layout="column">
+							<md-card>
+								<md-card-title>
+									<md-card-title-media style="margin-right:15px; margin-top: 15px;">
+										<div class="md-media-sm card-media" style="width:110px;">
+											<img src="http://sistema.zmpro.com.br/images/produto-sem-imagem-1.gif" ng-if="to_url == ''" style="border-radius: 7px">
+											<img src="{{produto.pd_foto_url}}"  style="border-radius: 7px">
+										</div>
+									</md-card-title-media>
+
+									<md-card-title-text style="height: 110px;">
+										<span class="md-headline">{{produto.pd_desc}}</span>
+										<span class="md-subhead">{{produto.pd_composicao | limitTo:85}}{{produto.pd_composicao.length >= 85 ? '...' : ''}}</span>
+									
+										<span class="md-headline" style="bottom: 10px;">{{produto.pd_vista | currency : 'R$'}}</span>
+									</md-card-title-text>
+
+								</md-card-title>
+
+								<md-card-actions layout="row" layout-align="end center">
+									<md-button class="md-raised md-accent" style="border-radius: 6px; background-color:#F51929;">Add</md-button>
+								</md-card-actions>
+
+							</md-card>
+						</div>
+
+					</div>
+
+			</div>
+
+
+
+		</div>
+		
+	</div>

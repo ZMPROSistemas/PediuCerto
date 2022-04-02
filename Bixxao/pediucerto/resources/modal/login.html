@@ -1,0 +1,87 @@
+
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+	.container-app {
+		overflow: hidden;
+	}
+	.card-header{
+		width: 400px;
+		margin:0 auto;
+	}
+	.emp{
+		margin: 0 auto;
+		font-size:28px;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 0px;
+		color: #000000;
+	}
+	.loginText{
+		font-size: 18px;
+		color: #000000;
+		/*font-weight: bold;*/
+	}
+	.form-control{
+		border: 2px solid #7F7F7F;
+		height:63px;
+		border-radius: 6px;
+		opacity: 1;
+	}
+	.btn-loogin{
+		border: 2px solid #707070; 
+		border-radius: 6px; 
+		width: 50%; 
+		height: 55px;
+	}
+</style>
+
+<div class="modal fade" id="Login" tabindex="-1" aria-labelledby="LoginLabel" aria-hidden="true" data-backdrop="static">
+    
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="" style="margin-top:10%; background-color: transparent;">
+                    
+                    <div class="emp">Login</div>
+
+                    <div style="margin-top:20px;">
+                        <span class="loginText">Celular</span><br>
+                        <input type="text"  inputmode="numeric" class="form-control" name="celular" onkeyup="mascaraCelular( this, mtel );" maxlength="15" ng-model="celularUser" autocomplete="off">
+                    </div>
+                    
+                    <div id="senha" style="margin-top:20px;">
+                        <span class="loginText">Senha</span><br>
+                        
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="senha" style="border-right: none;" ng-model="senha" ng-enter="entrar(celularUser, senha)" autocomplete="off">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" style="background-color: transparent; border: 1.5px solid #7F7F7F; border-left: none;"><button class="btn" style="border:none; padding: 0;"><i class="fas fa-eye-slash"></i></button></span>
+                                </div>
+                            </div>
+                        <div style="text-align: right; margin:15px 0 15px 0;">
+                            <span class="loginText" style="right: 0; font-weight: bold;">Esqueceu a senha?</span><br>
+                        </div>
+                        
+                    </div>
+            
+                    <div>
+                        <md-button class="md-accent md-raised" style="margin-left: -2px; width: 100%; border-radius: 6px; height:45px; background-color:  #F51929;" ng-click="entrar(celularUser, senha)">Entrar</md-button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

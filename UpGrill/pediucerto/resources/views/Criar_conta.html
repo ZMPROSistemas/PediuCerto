@@ -1,0 +1,268 @@
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+    .container-app {
+		overflow: hidden;
+	}
+	.card-header{
+		width: 100%;
+		margin:0 auto;
+	}
+
+    .emp{
+		margin: 0 auto;
+		font-size:28px;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 0px;
+		color: #000000;
+    }
+    .form-control{
+        text-transform: capitalize;
+    }
+   
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width:500px;
+        height:350px;
+
+    }
+
+    md-radio-button{
+        border: 1px #ccccccd9 solid;
+        border-radius: 6px;
+        padding: 8px;
+        background-color: #dcdcdc7d;
+    }
+
+    md-radio-button .md-container {
+        margin-left: 10px;
+    }
+    .md-fab{
+        display:none;
+    }
+</style>
+<script>
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+        lat: -33.8688,
+        lng: 151.2195
+        },
+        zoom: 13
+    });
+
+    const card = document.getElementById("pac-card");
+  const input = document.getElementById("pac-input");
+  const autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
+  const infowindow = new google.maps.InfoWindow();
+  const infowindowContent = document.getElementById("infowindow-content");
+  infowindow.setContent(infowindowContent);
+  const marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29)
+  });
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    marker.setVisible(false);
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry) {
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert("No details available for input: '" + place.name + "'");
+      return;
+    } // If the place has a geometry, then present it on a map.
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17); // Why 17? Because it looks good.
+    }
+
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    let address = "";
+
+    if (place.address_components) {
+      address = [
+        (place.address_components[0] &&
+          place.address_components[0].short_name) ||
+          "",
+        (place.address_components[1] &&
+          place.address_components[1].short_name) ||
+          "",
+        (place.address_components[2] &&
+          place.address_components[2].short_name) ||
+          ""
+      ].join(" ");
+    }
+
+    infowindowContent.children["place-icon"].src = place.icon;
+    infowindowContent.children["place-name"].textContent = place.name;
+    infowindowContent.children["place-address"].textContent = address;
+    infowindow.open(map, marker);
+  }); // Sets a listener on a radio button to change the filter type on Places
+  // Autocomplete.
+
+ 
+  }
+</script>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: fixed; z-index: 9999;">
+    <a ng-click="navPage()"><i class="fas fa-chevron-left" ></i></a>
+
+    
+</div>
+
+<md-button class="md-fab md-fab-top-right" style="margin-top:-8px; top: 8px; padding: 0; display: block;" >
+    <i class="fas fa-user" ng-if="pe_foto_perfil == null"></i>
+    <img ng-src="{{pe_foto_perfil}}" class="md-avatar" alt="perfil usuário" style="border-radius: 50%; width: 100%;" ng-if="pe_foto_perfil != null"/>
+</md-button>
+
+<?php
+    include_once 'resources/modal/image.html';
+?>
+
+<div class="card-header" style="margin-top:20%; background-color: transparent;">
+    <div class="emp">Termine seu cadastro</div>
+
+    <div style="margin-top:10px;">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="loginText" style="text-size:18px; font-weight:bold;">Nome(*)</label>
+            <input type="text" class="form-control" name="nome" ng-model="perfil.nome" autocomplete="hidden">
+            <div ng-if="msgNome" style="{{msgStyleNome}} font-size:12px; margin-top=-45px;">{{userMsgNome}}</div>
+        </md-input-container>
+        
+    </div>
+
+    <div style="margin-top:10px;">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="loginText" style="text-size:18px; font-weight:bold;">Nome de usuario(*)</label>
+            <input type="text" class="form-control" name="user" ng-model="perfil.user" ng-blur="user(perfil.user)" value="" autocomplete="off" ng-required="true" style="text-transform: none;">
+            <div ng-if="msg" style="{{msgStyle}} font-size:12px;">{{userMsg}}</div>
+        </md-input-container>
+        
+    </div>
+
+    <div style="margin-top:10px;">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="loginText" style="text-size:18px; font-weight:bold;">Email(*)</label>
+            <input type="email" class="form-control" name="email" ng-model="perfil.email" ng-blur="userEmail(perfil.email)" autocomplete="hidden" ng-required="true" style="text-transform: none;">
+            <div ng-if="msgEmail" style="{{msgStyleEmail}} font-size:12px; margin-top=-45px;">{{userMsgEmail}}</div>
+        </md-input-container>
+    
+    </div>
+
+    
+    <div layout="row" layout-align="space-between center" style="margin-top:10px;">
+        <div>
+            <md-input-container>
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Senha(*)</label>
+                <input type="password" class="form-control" name="pass" ng-model="perfil.pass" autocomplete="off" style="text-transform: none;">
+                <div ng-if="msgPass" style="{{msgStylePass}} font-size:12px; margin-top=-45px;">{{userMsgPass}}</div>
+            </md-input-container>
+        </div>
+
+        <div>
+            <md-input-container>
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Confirmar Senha(*)</label>
+                <input type="password" class="form-control" name="pass2" ng-model="perfil.pass2" autocomplete="off" ng-blur="verPAss(perfil.pass, perfil.pass2)" style="text-transform: none;">
+                <div ng-if="msgPass2" style="{{msgStylePass2}} font-size:12px; margin-top=-45px;">{{userMsgPass2}}</div>
+            </md-input-container>
+        </div>
+       
+    </div>
+    
+
+</div>
+
+<div class="card-header" id="pac-card" style="background-color: transparent;">
+
+    <div class="emp">Cadastre seu endereço</div>
+
+    <md-input-container class="md-block" flex-gt-sm>
+        <div style="margin-top:20px;" id="pac-container">
+            <label class="loginText" style="text-size:18px; font-weight:bold;">Rua(*)</label>
+            <input id="pac-input" type="text" class="form-control" name="adress" ng-model="perfil.adress" autocomplete="off">
+            <div ng-if="msgAdress" style="{{msgStyleAdress}} font-size:12px; margin-top=-45px;">{{userMsgAdress}}</div>
+        </div>
+    </md-input-container>
+        
+
+        <div layout="row" layout-align="space-between center">
+
+            <md-input-container>
+                <div class="col">
+                    <label class="loginText" style="text-size:18px; font-weight:bold;">Bairro(*)</label>
+                    <input type="text" class="form-control" name="bairro" ng-model="perfil.bairro" autocomplete="off">
+                    <div ng-if="msgBairro" style="{{msgStyleBairro}} font-size:12px; margin-top=-45px;">{{userMsgBairro}}</div>
+                </div>
+            </md-input-container>
+            
+            <md-input-container>
+                <div class="col">
+                    <label class="loginText" style="text-size:18px; font-weight:bold;">Número(*)</label>
+                    <input type="text" class="form-control" name="numero" ng-model="perfil.numero" autocomplete="off">
+                    <div ng-if="msgNumero" style="{{msgStyleNumero}} font-size:12px; margin-top=-45px;">{{userMsgNumero}}</div>
+                </div>
+            </md-input-container>
+            
+            
+        </div>
+
+        <div layout="row" layout-align="space-between center">
+
+            <md-input-container>
+                <div class="col">
+                    <label class="loginText" style="text-size:18px; font-weight:bold;">Cidade(*)</label>
+                    <input type="text" class="form-control" name="cidade" ng-model="perfil.cidade" autocomplete="hidden">
+                    <div ng-if="msgCidade" style="{{msgStyleCidade}} font-size:12px; margin-top=-45px;">{{userMsgCidade}}</div>
+                </div>
+            </md-input-container>
+            
+            <md-input-container>
+                <div class="col">
+                    <label class="loginText" style="text-size:18px; font-weight:bold;">UF(*)</label>
+                    <input type="text" class="form-control" name="uf" ng-model="perfil.uf" placeholder="Ex: PR" maxlength="2" style="text-transform: uppercase;" autocomplete="off">
+                    <div ng-if="msgUf" style="{{msgStyleUf}} font-size:12px; margin-top=-45px;">{{userMsgUf}}</div>
+                </div>
+            </md-input-container>
+            
+            
+        </div>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <div id="pac-container">
+                <label class="loginText" style="text-size:18px; font-weight:bold;">Complemento</label>
+                <input id="pac-input" type="text" class="form-control" name="adress" ng-model="perfil.comp" autocomplete="off">
+            </div>
+        </md-input-container>
+        
+
+        <div class="form-row" ng-init="perfil.local = 'casa'">
+            <md-radio-group ng-model="perfil.local" style="width: 100%; margin-top: 15px;">
+
+                <md-radio-button value="casa" class="md-primary" style="height: 50px;"><i class="fas fa-home"></i> Casa</md-radio-button>
+                <md-radio-button value="trabalho"><i class="fas fa-briefcase"></i> Trabalho </md-radio-button>
+                
+          
+            </md-radio-group>
+        </div>
+
+        <div id="map"></div>
+        <div id="infowindow-content">
+          <img src="" width="16" height="16" id="place-icon" />
+          <span id="place-name" class="title"></span><br />
+          <span id="place-address"></span>
+        </div>
+    
+    <md-button  class="md-raised md-warn" style="width: 100%; border-radius: 6px; margin-top:30px;" style="font-size: 12px;" ng-click="criarPerfil(perfil)">Salvar</md-button>
+
+
+</div>

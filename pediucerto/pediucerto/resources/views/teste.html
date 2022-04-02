@@ -1,0 +1,77 @@
+    <div class="container body-content">
+        <div class="box-login">
+        <h2>Login</h2>
+
+        <!-- html do botão -->
+        <div id="meu-botao">Fazer login com: </div>
+
+        <hr/>
+        <a href="javascript:void(0);" onclick="signOut();">Sign out</a>
+        </div>
+        <hr />
+        <footer>
+        <p>&copy; Fábrica de Código</p>
+        </footer>
+    </div>
+
+  
+  <!--Google Platform Library-->
+	
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+  <script>
+   
+   function renderButton() {
+    gapi.signin2.render('meu-botao', {
+        //'scope': 'email profile https://www.googleapis.com/auth/plus.login', // solicitando acesso ao profile e ao e-mail do usuário
+        'width': 250,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'call-to-action':true,
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+}
+
+/**
+  Função executada quando o login é efetuado com sucesso
+*/
+function onSuccess(googleUser) {
+    // Recuperando o profile do usuário
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log("Name: " + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // Recuperando o token do usuario. Essa informação você necessita passar para seu backend
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+}
+
+/**
+  Função executada quando ocorrer falha no logn
+*/
+function onFailure(error) {
+    console.log(error);
+}
+
+/**
+  Função de deslogar o usuário
+*/
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+}
+  </script>

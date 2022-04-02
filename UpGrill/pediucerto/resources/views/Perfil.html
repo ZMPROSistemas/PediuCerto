@@ -1,0 +1,90 @@
+<style>
+
+</style>
+
+<div flex="15" style="margin-left: 10px; top: 8px; font-size: 25px; position: fixed; z-index: 9999;">
+    <a href="<?=$urlAssets?>estabelecimento/{{empresa[0].em_cod}}/{{empresa[0].em_token}}"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+<div class="card-header" style="margin-top:15%;">
+    <div layout="row" layout-align="space-between center">
+        <div>
+            <div layout="column" layout-align="space-between start">
+
+                <div>
+                   <h5> {{perfil[0].pe_nome}}</h5>
+                </div>
+
+                <div>
+                   <span ng-if="perfil[0].pe_celular != ''"> {{perfil[0].pe_celular}} - </span><span>{{perfil[0].pe_email}}</span>
+                </div>
+            </div>
+            
+        </div>
+
+        <div>
+            <md-button ng-click="showFormaDePagamento()" class="md-warn">Editar</md-button>
+        </div>
+        
+      </div>
+</div>
+<div class="card-header">
+    
+    <md-list flex>
+        <md-list-item class="md-3-line" ng-click="meusPedidos()">
+            <i class="fas fa-receipt" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Meus Pedidos</span>
+            </div>
+
+        </md-list-item>
+
+        <md-list-item class="md-3-line" ng-click="meusEndereco()">
+            
+            <i class="fas fa-home" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Endereço</span>
+            </div>
+
+        </md-list-item>
+
+        <md-list-item class="md-3-line" ng-click="null">
+            
+            <i class="fas fa-credit-card" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Pagamentos</span>
+            </div>
+
+        </md-list-item>
+
+        <md-list-item class="md-3-line" ng-click="null">
+            
+            <i class="far fa-heart" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Favoritos</span>
+            </div>
+
+        </md-list-item>
+
+        <md-list-item class="md-3-line" ng-click="null">
+            
+            <i class="far fa-question-circle" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Ajuda</span>
+            </div>
+
+        </md-list-item>
+
+        <md-list-item class="md-3-line" ng-click="signOut();">
+            
+            <i class="fas fa-sign-out-alt" style="color: #909090; margin-right: 12px; font-size: 20px;"></i>
+            <div class="md-list-item-text" layout="column">
+               <span style="font-weight: bold; font-size: 20px;">Sair</span>
+            </div>
+
+        </md-list-item>
+
+
+
+    </md-list>
+</div>

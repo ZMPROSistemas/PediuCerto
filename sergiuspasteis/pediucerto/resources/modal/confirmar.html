@@ -1,0 +1,206 @@
+
+<div class="modal fade" id="confirmar" tabindex="-1" aria-labelledby="confirmar" aria-hidden="true" data-backdrop="static">
+    <?php
+        include_once("resources/modal/aguardePed.html");
+    ?>
+    <div class="modal-dialog odal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmar">Confirmar?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center><h3>Confirmar Pedido</h3></center>
+                    
+                    <div class="card-header" style="background: transparent;">
+                        
+                        <div layout="row" flex-offset="5" ng-if="endereco == null">
+			
+                            <div layout="column" layout-align="center center">
+                                <i class="fas fa-map-marker-alt" style="font-size:30px; color: rgba(87,87,87,1); margin-right: 15px;"></i>
+                            </div>
+                
+                            <div flex="" style="margin-top:5px;">
+                                <h6 style="width: 80%;">Adicione um endereço para entrega</h6>
+                            </div>
+                
+                        </div>
+
+                        <div layout="row" flex-offset="5" ng-if="endereco != null">
+                            <div layout="column" layout-align="center center">
+                                <i class="fas fa-home" style="font-size:30px; color: rgba(87,87,87,1); margin-right: 15px;" ng-if="endereco[0].local == 'Casa'"></i>
+                                <i class="fas fa-briefcase" style="font-size:30px; color: rgba(87,87,87,1); margin-right: 15px;" ng-if="endereco[0].local == 'Trabalho'"></i> 
+                                <i class="fas fa-map-marker-alt" style="font-size:30px; color: rgba(87,87,87,1); margin-right: 15px;" ng-if="endereco[0].local == 'Local Atual'"></i>
+                                <i class="fas fa-store" style="font-size:30px; color: rgba(87,87,87,1); margin-right: 15px;" ng-if="endereco[0].local == 'Retirar No Estabelecimento'"></i>
+                            </div>
+                
+                            <div layout="column" flex="66">
+                                <div flex="">
+                                    <h5>{{endereco[0].local}}</h5>
+                                </div>
+                                
+                                <div flex="" ng-if="endereco[0].local != 'Retirar No Estabelecimento'" style="font-size:18px;">
+                                    Rua: {{endereco[0].pe_endereco}}, Nº {{endereco[0].pe_end_num}} - {{endereco[0].pe_cidade}},{{endereco[0].pe_uf}}<br>
+                                    {{endereco[0].pe_end_comp}}	
+                                </div>
+                            </div>
+                
+                            <div layout="column" layout-align="end end">
+                                <md-button href="<?=$urlAssets?>endereco/local_entrega/{{perfil[0].pe_site}}" class="md-warn">Alterar</md-button>
+                            </div>
+                
+                        </div>
+
+                
+                    </div>
+
+                    <div class="card-header" style="background: transparent;">
+                        
+                        <div ng-repeat="sacola in sacola"  class="itens" style="margin-top:20px;">
+
+                            <div class="card-header" style="margin-bottom: -30px;">
+                                <div layout="row">
+                                    <!--div><a ng-click="removerItemSacola(sacola)"><i class="fas fa-trash-alt" style="font-size: 18px; color:#F51929; margin-right: 15px; margin-top: 10px;"></i></a></div-->
+                                    <div layout="column" flex="60">
+                                        
+                                        <div flex="" style="">
+                
+                                                <span class="md-headline" style="font-size: 18px; vertical-align: left; font-weight: bold; color: #000">{{sacola.pd_desc}}</span><br>
+                                                <!--span class="md-headline" style="font-size: 12px; vertical-align: left;">Customizar <i class="fas fa-angle-down"></i> </span><br-->
+                                                
+                                        </div>
+                
+                                    </div>
+                
+                                    <div layout="row" style="margin-top:-2px;">
+                                        <div class="" style="padding: none; height: 40px;">
+                
+                                            <div class="btn-group">
+                                                <span class="badge badge-secondary" style="background:transparent; color: #F51929; border: 1.5px #F51929 solid;  width:66px; height: 28px; vertical-align: middle; font-size: 14px;">{{sacola.pd_quantidade}}</span>
+                                                <!--span style="margin-top:6px;">{{sacola.pd_quantidade}}</span-->
+                
+                                            </div>
+                                            
+                                        </div>
+                
+                                        <div style="text-align: right; width: 100px;">
+                
+                                            <span style="text-align: right; font-size:16px;">{{sacola.v_total | currency: 'R$'}}</span>
+                                        </div>
+                
+                                    </div>
+                
+                                </div>
+                
+                
+                                <div id="item{{sacola.item}}" style="display: block;">
+                                    <span class="badge badge-primary badge-pill" style="font-size: 12px;">{{sacola.pd_obs}}</span>
+                                    <ul class="list-group" ng-repeat="adicional in adicional | filter:{produto:sacola.item}">
+                                        <li class="list-group-item align-items-center">
+                                            <span class="badge badge-primary badge-pill" style="font-size: 14px;">{{adicional.ex_qts}}</span>
+                                            {{adicional.ex_desc}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                
+                            <hr style="width: 90%; margin: 0 auto; margin-top:18px;">
+                
+                        </div>
+
+                    </div>
+
+                    <div class="card-header" style="margin-top: 30px;">
+                        <span style="font-size: 20px; font-weight: bold;">Detalhes </span><br>
+            
+                        <div layout="row" style="margin-top: 18px;">
+                            <div flex="80">
+                                <span style="font-size: 15px; font-weight: bold; color:#7f7f7f"> Item Total</span>
+                            </div>
+            
+                            <div flex="20" style="text-align: right;">
+                                <span style="font-size: 15px; font-weight: bold;"> {{totalSacolaValor | currency:'R$'}}</span>
+                            </div>
+                        </div>
+            
+                        <div layout="row" style="margin-top: 14px;" ng-if="endereco[0].local != 'Retirar No Estabelecimento' && taxa.length != 0">
+                            <div flex="80">
+                                <span style="font-size: 15px; font-weight: bold; color:#7f7f7f"> Entrega</span>
+                            </div>
+            
+                            <div flex="20" style="text-align: right;">
+                                <span style="font-size: 15px; font-weight: bold;"> {{taxa[0].ba_taxa | currency: 'R$ '}}</span>
+                            </div>
+                        </div>
+            
+                        <hr style="width: 90%; margin: 0 auto; margin-top:14px;">
+            
+                        <div layout="row" style="font-weight: bold; margin-top: 18px;">
+                            <div flex="80">
+                                <span> Total</span>
+                            </div>
+            
+                            <div flex="20" style="text-align: right;" ng-if="endereco[0].local != 'Retirar No Estabelecimento'">
+                                <span style="font-size: 15px; font-weight: bold;">  {{totalSacolaValor + taxa[0].ba_taxa | currency:'R$'}}</span>
+                            </div>
+            
+                            <div flex="20" style="text-align: right;" ng-if="endereco[0].local == 'Retirar No Estabelecimento'">
+                                <span style="font-size: 15px; font-weight: bold;">  {{totalSacolaValor | currency:'R$'}}</span>
+                            </div>
+            
+                        </div>
+            
+                        <hr style="width: 90%; margin: 0 auto; margin-top:14px;">
+                    </div>
+                    
+                    <div class="card-header" style="background: transparent;">
+                        <div class="input-group" style="width: 100%;">
+                            <textarea class="form-control" placeholder="Observação" style="height: 50px;" ng-model="obs">{{obs}}</textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="far fa-edit"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-header" style="background: transparent;" ng-if="perfil != null">
+                        <h5>Pagamento</h5>
+                
+                        <div layout="row" layout-align="space-between center" style="padding-bottom: 0;">
+                
+                            <div>
+                                <h6>Forma de Pagamento</h6>
+                            </div>
+                
+                            <div>
+                                <md-button ng-click="showFormaDePagamento()" class="md-warn">Alterar</md-button>
+                                <!--md-button href="<?=$urlAssets?>fPagamento"  ng-click="showListBottomSheet()" class="md-warn">Alterar</md-button-->
+                            </div>
+                        </div>
+                        
+                        <span style="font-size: 14px; margin-top:-10px;" ng-if="formaPagamento != null">{{formaPagamento[0].forma}} <span ng-if="formaPagamento[0].trocoP != 0">- Troco para {{formaPagamento[0].trocoP | currency:'R$'}}</span></span>
+                         
+                        <div layout="row" layout-align="space-between center">
+                
+                            <div>
+                                <h6>CPF/CNPJ na Nota</h6>
+                            </div>
+                
+                            <div><md-button class="md-warn" ng-click="modalcpf_cnpj()">Adicionar</md-button></div>
+                        </div>
+                
+                        <span  style="font-size: 14px;" ng-if="cpfCnpj != null">CPF/CNPJ: {{cpfCnpj}}</span>
+                        
+                        
+                        <!--md-button class="md-accent md-raised" style="margin-left: -2px; border-radius: 6px;" >Finalizar Pedido</md-button-->
+                    </div>
+
+                </div>
+
+                <div class="modal-footer" style="width: 100%;">
+                    <md-button class="md-accent md-raised" style="background-color: #F51929 !important; margin-left: -2px; border-radius: 6px; height: 48px; font-size: 18px; font-weight: bold;" ng-click="finalizarPedido(obs)" ng-disabled="btnDisable == true;">Finalizar Pedido</md-button>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<style>
+	@font-face {
+	font-family:Poppins-Medium;
+	src: url('Font/Poppins-Medium.ttf');
+	}
+
+
+</style>
+
+<div flex="15" style="margin-top:20px; font-size: 15px; margin-left: 15px;">
+	<a href="<?=$urlAssets?>sacola/{{empresa[0].em_cod}}/{{empresa[0].em_token}}"><i class="fas fa-chevron-left" ></i></a>
+</div>
+
+<div layout="row">
+
+	<div class="card-header" style="width: 90%; border: none; background-color: transparent; margin-top: 15px;">
+		<h4>Digite o código de 5 dígitos que enviamos para {{numero}}</h4>
+
+		<input type="text" inputmode="numeric" class="form-control" style="border:1px rgba(0,0,0, 0.4) solid; letter-spacing: 3.5rem; margin-top:15px; text-align: center;" maxlength="5" ng-model="codigo" onkeypress="return onlynumber();">
+
+		<md-button class="md-raised md-primary" style="width: 100%; border-radius: 6px; margin-top:15px;" ng-click="verificar(codigo)">Verificar</md-button>
+	</div>
+
+</div>
+
+<div layout="row" style="margin: 0 auto; text-align: center; margin-top:25px; color: rgba(0, 0, 0, 0.5)">
+	<h5>Use código de verificação padrão de teste 12345</h5>
+</div>

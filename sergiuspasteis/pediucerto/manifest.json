@@ -1,0 +1,91 @@
+{
+  "lang" : "Portuguese",
+  "name" : "sergiuspasteis",
+  "scope" : "sergiuspasteis/pediucerto/estabelecimento/42/09D78A843DE27D3BAAEFB46FA55DCB45",
+  "display" : "standalone",
+  "start_url" : "https://zmsys.com.br/sergiuspasteis/pediucerto/estabelecimento/42/09D78A843DE27D3BAAEFB46FA55DCB45",
+  "short_name" : "sergiuspasteis",
+  "theme_color" : "#ff001e",
+  "description" : "Sistema De Delivery Sergius Pasteis",
+  "orientation" : "portrait",
+  "background_color" : "#ff001e",
+  "icons" : [
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "44x44"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "1240x600"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "150x150"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "620x300"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "36x36"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "sergiuspasteis.png",
+      "sizes": "76x76"
+    }],
+  "url" : "https://zmsys.com.br/sergiuspasteis/pediucerto/estabelecimento/42/09D78A843DE27D3BAAEFB46FA55DCB45",
+  "screenshots" : []
+}
